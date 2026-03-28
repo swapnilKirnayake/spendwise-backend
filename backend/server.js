@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
+
 const allowedOrigins = [ "https://spendwise-frontend-bice.vercel.app",
   "https://spendwise-68fe2ib7e-swapnil-kirnayakes-projects.vercel.app"
 ];
@@ -15,9 +16,9 @@ app.use(cors({
 
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
-    } else {
-      return callback(new Error("Not allowed by CORS"));
     }
+      return callback(null, false));
+    
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
