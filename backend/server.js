@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: "https://spendwise-frontend-bice.vercel.app",
+  origin: ["https://spendwise-frontend-bice.vercel.app","https://spendwise-frontend-pw0is7qgb-swapnil-kirnayakes-projects.vercel.app"]
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "authorization"]
 }));
