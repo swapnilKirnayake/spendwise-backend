@@ -7,14 +7,14 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [ "https://spendwise-frontend-bice.vercel.app",
-  "https://spendwise-68fe2ib7e-swapnil-kirnayakes-projects.vercel.app"
-];
 app.use(cors({
    origin: function (origin, callback) {
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    if (
+      origin.includes("vercel.app") ||
+      origin.includes("localhost")
+      ) {
       return callback(null, true);
     }
       return callback(null, false);  
@@ -22,6 +22,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.options("*", cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
